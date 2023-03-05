@@ -9,6 +9,7 @@ import IconButton from "@mui/joy/ICONBUTTON";
 import Typography from "@mui/joy/Typography";
 import BookmarkAdd from "@mui/icons-material/BookmarkAddOutlined";
 import { Sheet } from "@mui/joy";
+import Profile from "@/components/Profile";
 
 export default function Home() {
   return (
@@ -21,6 +22,14 @@ export default function Home() {
       </Head>
       <main>
         <Sheet sx={{ width: "100vw", height: "100vh" }}>
+          <Profile />
+          <Button component="a" href="/api/auth/login">
+            Login
+          </Button>
+          <Button component="a" href="/api/auth/logout">
+            Logout
+          </Button>
+
           <Typography level="h1">Home</Typography>
           <ColorToggle />
           <Card variant="outlined" sx={{ width: 700, height: 500 }}>

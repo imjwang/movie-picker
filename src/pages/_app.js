@@ -1,5 +1,6 @@
 import "@fontsource/public-sans";
 import { CssVarsProvider, extendTheme } from "@mui/joy/styles";
+import { UserProvider } from "@auth0/nextjs-auth0/client";
 
 const colors = {
   palette: {
@@ -88,7 +89,9 @@ const theme = extendTheme({
 export default function App({ Component, pageProps }) {
   return (
     <CssVarsProvider theme={theme}>
-      <Component {...pageProps} />
+      <UserProvider>
+        <Component {...pageProps} />
+      </UserProvider>
     </CssVarsProvider>
   );
 }
