@@ -1,17 +1,38 @@
 import Head from "next/head";
 import Image from "next/image";
 import ColorToggle from "@/components/ColorToggle";
-import AspectRatio from "@mui/joy/AspectRatio";
-import Box from "@mui/joy/Box";
-import Button from "@mui/joy/Button";
-import Card from "@mui/joy/Card";
-import IconButton from "@mui/joy/ICONBUTTON";
-import Typography from "@mui/joy/Typography";
+import {
+  IconButton,
+  Card,
+  Box,
+  Button,
+  Typography,
+  Sheet,
+  AspectRatio,
+} from "@mui/joy";
 import BookmarkAdd from "@mui/icons-material/BookmarkAddOutlined";
-import { Sheet } from "@mui/joy";
 import Profile from "@/components/Profile";
+import { supabase } from "@/lib/supabaseClient";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
 export default function Home() {
+  const { user, error, isLoading } = useUser();
+  const handleMovieAdd = async () => {
+    const { error } = await supabase.from("movies").insert({
+      name: "Jeff's Movie",
+      genre: "VIOLENCE",
+      director: "Jeff Jeffers",
+      user: user.sub,
+    });
+    console.log(error);
+  };
+  const handleTest = async () => {
+    const { error } = await supabase.from("users").insert({
+      id: user.sub,
+      name: user.name,
+    });
+    console.log(error);
+  };
   return (
     <>
       <Head>
@@ -21,7 +42,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <Sheet sx={{ width: "100vw", height: "100vh" }}>
+        <Sheet sx={{ px: 2, py: 2, width: "100vw", height: "100vh" }}>
           <Profile />
           <Button component="a" href="/api/auth/login">
             Login
@@ -65,19 +86,20 @@ export default function Home() {
                 variant="solid"
                 size="sm"
                 color="primary"
-                aria-label="Explore Bahamas Islands"
+                onClick={handleTest}
                 sx={{ ml: "auto", fontWeight: 600 }}
+                disabled={!user}
               >
-                Explore
+                ADD TEST USER
               </Button>
               <Button
                 variant="solid"
                 size="sm"
                 color="neutral"
-                aria-label="Explore Bahamas Islands"
+                onClick={handleMovieAdd}
                 sx={{ ml: "auto", fontWeight: 600 }}
               >
-                Explore
+                ADD TEST MOVIE
               </Button>
               <Button
                 variant="solid"
