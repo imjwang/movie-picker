@@ -1,12 +1,19 @@
 import { Html, Head, Main, NextScript } from "next/document";
-import { getInitColorSchemeScript } from "@mui/joy/styles";
 
 export default function Document() {
   return (
     <Html lang="en">
-      <Head />
+      <Head>
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0"
+        />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0"
+        />
+      </Head>
       <body>
-        {getInitColorSchemeScript()}
         <Main />
         <NextScript />
       </body>

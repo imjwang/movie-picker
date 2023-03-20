@@ -1,22 +1,14 @@
 import Head from "next/head";
 import Image from "next/image";
-import ColorToggle from "@/components/ColorToggle";
-import {
-  IconButton,
-  Card,
-  Box,
-  Button,
-  Typography,
-  Sheet,
-  AspectRatio,
-} from "@mui/joy";
-import BookmarkAdd from "@mui/icons-material/BookmarkAddOutlined";
 import Profile from "@/components/Profile";
 import { supabase } from "@/lib/supabaseClient";
 import { useUser } from "@auth0/nextjs-auth0/client";
+import NavBar from "@/components/NavBar";
+import Sheet from "@/components/Sheet";
 
 export default function Home() {
   const { user, error, isLoading } = useUser();
+
   const handleMovieAdd = async () => {
     const { error } = await supabase.from("movies").insert({
       name: "Jeff's Movie",
@@ -42,103 +34,16 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <Sheet sx={{ px: 2, py: 2, width: "100vw", height: "100vh" }}>
-          <Profile />
-          <Button component="a" href="/api/auth/login">
+        <NavBar />
+        <Profile />
+        {/* <input type="checkbox" className="toggle mx-2" /> */}
+        <Sheet>
+          <a className="btn btn-primary" href="/api/auth/login">
             Login
-          </Button>
-          <Button component="a" href="/api/auth/logout">
+          </a>
+          <a className="btn btn-primary" href="/api/auth/logout">
             Logout
-          </Button>
-
-          <Typography level="h1">Home</Typography>
-          <ColorToggle />
-          <Card variant="outlined" sx={{ width: 700, height: 500 }}>
-            <Typography level="h2" fontSize="md" sx={{ mb: 0.5 }}>
-              Yosemite National Park
-            </Typography>
-            <Typography level="body2">April 24 to May 02, 2021</Typography>
-            <IconButton
-              aria-label="bookmark Bahamas Islands"
-              variant="plain"
-              color="neutral"
-              size="sm"
-              sx={{ position: "absolute", top: "0.5rem", right: "0.5rem" }}
-            >
-              <BookmarkAdd />
-            </IconButton>
-            <AspectRatio minHeight="120px" maxHeight="200px" sx={{ my: 2 }}>
-              <img
-                src="https://images.unsplash.com/photo-1527549993586-dff825b37782?auto=format&fit=crop&w=700"
-                srcSet="https://images.unsplash.com/photo-1527549993586-dff825b37782?auto=format&fit=crop&w=700&dpr=2 2x"
-                loading="lazy"
-                alt=""
-              />
-            </AspectRatio>
-            <Box sx={{ display: "flex" }}>
-              <div>
-                <Typography level="body3">Total price:</Typography>
-                <Typography fontSize="lg" fontWeight="lg">
-                  $2,900
-                </Typography>
-              </div>
-              <Button
-                variant="solid"
-                size="sm"
-                color="primary"
-                onClick={handleTest}
-                sx={{ ml: "auto", fontWeight: 600 }}
-                disabled={!user}
-              >
-                ADD TEST USER
-              </Button>
-              <Button
-                variant="solid"
-                size="sm"
-                color="neutral"
-                onClick={handleMovieAdd}
-                sx={{ ml: "auto", fontWeight: 600 }}
-              >
-                ADD TEST MOVIE
-              </Button>
-              <Button
-                variant="solid"
-                size="sm"
-                color="warning"
-                aria-label="Explore Bahamas Islands"
-                sx={{ ml: "auto", fontWeight: 600 }}
-              >
-                Explore
-              </Button>
-              <Button
-                variant="solid"
-                size="sm"
-                color="info"
-                aria-label="Explore Bahamas Islands"
-                sx={{ ml: "auto", fontWeight: 600 }}
-              >
-                Explore
-              </Button>
-              <Button
-                variant="solid"
-                size="sm"
-                color="success"
-                aria-label="Explore Bahamas Islands"
-                sx={{ ml: "auto", fontWeight: 600 }}
-              >
-                Explore
-              </Button>
-              <Button
-                variant="solid"
-                size="sm"
-                color="danger"
-                aria-label="Explore Bahamas Islands"
-                sx={{ ml: "auto", fontWeight: 600 }}
-              >
-                Explore
-              </Button>
-            </Box>
-          </Card>
+          </a>
         </Sheet>
       </main>
     </>
