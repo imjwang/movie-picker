@@ -1,5 +1,7 @@
 import { supabase } from "@/lib/supabaseClient";
 import { useState, useEffect } from "react";
+import Sheet from "@/components/Sheet";
+import NavBar from "@/components/NavBar";
 
 const Page = () => {
   const [t, setT] = useState([]);
@@ -28,11 +30,23 @@ const Page = () => {
 
   return (
     <>
-      {t.map((i) => (
-        <ul key={i.id}>
-          <li>{i.name}</li>
-        </ul>
-      ))}
+      <NavBar />
+      <Sheet>
+        <table className="table w-full">
+          <thead>
+            <tr>
+              <th>name</th>
+            </tr>
+          </thead>
+          <tbody>
+            {t.map((i) => (
+              <tr key={i.id}>
+                <td>{i.name}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </Sheet>
     </>
   );
 };
