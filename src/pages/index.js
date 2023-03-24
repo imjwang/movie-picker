@@ -5,6 +5,7 @@ import { supabase } from "@/lib/supabaseClient";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import NavBar from "@/components/NavBar";
 import Sheet from "@/components/Sheet";
+import Review from "@/components/Review";
 
 export default function Home() {
   const { user, error, isLoading } = useUser();
@@ -36,6 +37,7 @@ export default function Home() {
       <main>
         <NavBar />
         <Profile />
+        <Review />
         {/* <input type="checkbox" className="toggle mx-2" /> */}
         <Sheet>
           <a className="btn btn-primary" href="/api/auth/login">

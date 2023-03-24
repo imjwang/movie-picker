@@ -1,10 +1,11 @@
 import ThemeToggle from "./ThemeToggle";
+import Menu from "./Menu";
 
 const NavBar = () => {
   return (
     <div className="navbar bg-neutral">
       <div className="navbar-start">
-        <button className="btn btn-sm btn-secondaryr">click me!</button>
+        <Menu />
       </div>
       <div className="navbar-center">
         <article className="prose prose-2xl font-bold">movies</article>
