@@ -12,7 +12,7 @@ export default function Avatar() {
   return (
     user && (
       <div className="avatar">
-        <div className="w-12 rounded-full ring-1 ring-lime-200 hover:ring-teal-200 hover:ring-2">
+        <div className="w-12 rounded-full ring-1 ring-offset-4 ring-offset-neutral ring-lime-200 hover:ring-teal-200 hover:ring-2">
           <Image width={100} height={100} alt={user.name} src={user.picture} />
         </div>
       </div>

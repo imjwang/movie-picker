@@ -5,6 +5,7 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 import NavBar from "@/components/NavBar";
 import Sheet from "@/components/Sheet";
 import Review from "@/components/Review";
+import Spinner from "@/components/Spinner";
 
 export default function Home() {
   const { user, error, isLoading } = useUser();
@@ -36,7 +37,9 @@ export default function Home() {
       <main>
         <NavBar />
         <Review movie="Parasite" />
-        {/* <input type="checkbox" className="toggle mx-2" /> */}
+        <div className="bg-base-200 h-12 py-1 px-10 w-1/2 self-center">
+          <Spinner color="cyan-500" />
+        </div>
         <Sheet>
           <a className="btn btn-primary" href="/api/auth/login">
             Login
