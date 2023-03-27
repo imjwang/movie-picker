@@ -1,9 +1,10 @@
 import Rating from "./Rating";
 import TextBox from "./TextBox";
 
-const Review = () => {
+const Review = ({ movie }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(e.target.review.value);
     for (const i of e.target) {
       if (i.checked) {
         console.log(i.value);
@@ -14,7 +15,11 @@ const Review = () => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <div className="mx-6 my-6 px-6 py-6 flex flex-col space-y-2 bg-base-300 h-96">
+        <div className="mx-6 my-6 px-6 py-6 flex flex-col space-y-6 bg-base-300 grow">
+          <article className="prose">
+            <h1>{movie}</h1>
+          </article>
+
           <Rating />
           <TextBox />
           <button

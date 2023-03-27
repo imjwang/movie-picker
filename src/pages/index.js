@@ -1,6 +1,5 @@
 import Head from "next/head";
-import Image from "next/image";
-import Profile from "@/components/Profile";
+import Profile from "@/components/Avatar";
 import { supabase } from "@/lib/supabaseClient";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import NavBar from "@/components/NavBar";
@@ -36,8 +35,7 @@ export default function Home() {
       </Head>
       <main>
         <NavBar />
-        <Profile />
-        <Review />
+        <Review movie="Parasite" />
         {/* <input type="checkbox" className="toggle mx-2" /> */}
         <Sheet>
           <a className="btn btn-primary" href="/api/auth/login">

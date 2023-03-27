@@ -1,4 +1,4 @@
-const Star = ({ tooltip = "tooltip", value }) => {
+const Star = ({ tooltip = "tooltip", value, defaultChecked }) => {
   return (
     <input
       title={tooltip}
@@ -6,6 +6,7 @@ const Star = ({ tooltip = "tooltip", value }) => {
       name="review-rating"
       className="mask mask-star-2 bg-yellow-400"
       value={value}
+      defaultChecked={defaultChecked}
     />
   );
 };

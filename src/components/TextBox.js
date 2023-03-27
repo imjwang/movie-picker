@@ -7,12 +7,13 @@ Bong Joon-ho weaves complex themes into a suspenseful, must-see film.
 
 const TextBox = () => {
   return (
-    <div className="form-control grow">
+    <div className="form-control">
       <label className="label-text">
         <span>Review</span>
       </label>
       <textarea
-        className="textarea textarea-bordered h-1/3 focus:h-full"
+        name="review"
+        className="textarea textarea-bordered h-1/3 focus:h-96 placeholder:opacity-40"
         placeholder={placeholder}
         style={{ resize: "none" }}
       />
