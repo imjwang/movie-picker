@@ -7,7 +7,6 @@ const NavBar = () => {
     <div className="navbar bg-neutral">
       <div className="navbar-start">
         <Menu />
-        <Avatar />
       </div>
       <div className="navbar-center">
         <article className="prose prose-2xl font-bold">movies</article>

@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Profile from "@/components/Avatar";
 import { supabase } from "@/lib/supabaseClient";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import NavBar from "@/components/NavBar";
@@ -36,18 +35,11 @@ export default function Home() {
       </Head>
       <main>
         <NavBar />
-        <Review movie="Parasite" />
+        <Review />
         <div className="bg-base-200 h-12 py-1 px-10 w-1/2 self-center">
-          <Spinner color="cyan-500" />
+          <Spinner />
         </div>
-        <Sheet>
-          <a className="btn btn-primary" href="/api/auth/login">
-            Login
-          </a>
-          <a className="btn btn-primary" href="/api/auth/logout">
-            Logout
-          </a>
-        </Sheet>
+        <Sheet></Sheet>
       </main>
     </>
   );

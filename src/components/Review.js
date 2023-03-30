@@ -1,7 +1,7 @@
 import Rating from "./Rating";
 import TextBox from "./TextBox";
 
-const Review = ({ movie }) => {
+const Review = ({ movie = "Parasite" }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(e.target.review.value);
