@@ -1,5 +1,6 @@
 import Rating from "./Rating";
 import TextBox from "./TextBox";
+import Form from "./Form";
 
 const Review = ({ movie = "Parasite" }) => {
   const handleSubmit = (e) => {
@@ -13,24 +14,10 @@ const Review = ({ movie = "Parasite" }) => {
   };
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <div className="mx-6 my-6 px-6 py-6 flex flex-col space-y-6 bg-base-300 grow">
-          <article className="prose">
-            <h1>{movie}</h1>
-          </article>
-
-          <Rating />
-          <TextBox />
-          <button
-            className="btn btn-md btn-primary w-24 self-end"
-            type="submit"
-          >
-            submit
-          </button>
-        </div>
-      </form>
-    </>
+    <Form handleSubmit={handleSubmit} title={movie}>
+      <Rating />
+      <TextBox />
+    </Form>
   );
 };
 

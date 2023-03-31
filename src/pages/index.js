@@ -5,6 +5,7 @@ import NavBar from "@/components/NavBar";
 import Sheet from "@/components/Sheet";
 import Review from "@/components/Review";
 import Spinner from "@/components/Spinner";
+import AddForm from "@/components/AddForm";
 
 export default function Home() {
   const { user, error, isLoading } = useUser();
@@ -36,6 +37,7 @@ export default function Home() {
       <main>
         <NavBar />
         <Review />
+        <AddForm />
         <div className="bg-base-200 h-12 py-1 px-10 w-1/2 self-center">
           <Spinner />
         </div>

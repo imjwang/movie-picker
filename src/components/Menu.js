@@ -11,20 +11,20 @@ const Menu = () => {
         {user ? (
           <Avatar user={user} />
         ) : (
-          <span class="material-symbols-outlined">login</span>
+          <a href="/api/auth/login">
+            <span className="material-symbols-outlined">login</span>
+          </a>
         )}
       </label>
-      <ul className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-        {user ? (
+      {user ? (
+        <ul className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
           <li>
             <a href="/api/auth/logout">Log Out</a>
           </li>
-        ) : (
-          <li>
-            <a href="/api/auth/login">Log In</a>
-          </li>
-        )}
-      </ul>
+        </ul>
+      ) : (
+        <></>
+      )}
     </div>
   );
 };

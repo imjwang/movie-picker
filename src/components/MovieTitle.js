@@ -1,20 +1,17 @@
 import { useState } from "react";
+import useWordCount from "@/hooks/useWordCount";
 
 const MovieTitle = () => {
-  const [textCount, setTextCount] = useState(0);
-
-  const handleChange = (e) => {
-    setTextCount(e.target.value.length);
-  };
+  const { textCount, handleChange } = useWordCount();
 
   return (
-    <div className="form-control w-full max-w-xs">
+    <div className="form-control w-full max-w-md">
       <label className="label">
         <span className="label-text">Movie Title</span>
       </label>
       <input
         type="text"
-        className="input input-bordered w-full max-w-xs"
+        className="input input-bordered w-full max-w-md"
         maxLength={50}
         onChange={handleChange}
       />
