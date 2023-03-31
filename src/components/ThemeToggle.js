@@ -8,7 +8,7 @@ const ThemeToggle = () => {
     if (storageDarkMode) {
       document.documentElement.setAttribute(
         "data-theme",
-        storageDarkMode === "true" ? "luxury" : "retro"
+        storageDarkMode === "true" ? "luxury" : "bumblebee"
       );
       setDarkMode(storageDarkMode === "true");
     }
@@ -18,7 +18,7 @@ const ThemeToggle = () => {
       ).matches;
       document.documentElement.setAttribute(
         "data-theme",
-        systemDarkMode ? "luxury" : "retro"
+        systemDarkMode ? "luxury" : "bumblebee"
       );
       setDarkMode(systemDarkMode);
     }
@@ -27,7 +27,7 @@ const ThemeToggle = () => {
   const handleTheme = ({ target: { checked } }) => {
     document.documentElement.setAttribute(
       "data-theme",
-      checked ? "luxury" : "retro"
+      checked ? "luxury" : "bumblebee"
     );
     setDarkMode(checked);
     localStorage.setItem("darkMode", checked);

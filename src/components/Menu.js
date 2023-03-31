@@ -26,7 +26,7 @@ const Menu = () => {
         ) : (
           <a href="/api/auth/login">
             <div
-              className="tooltip tooltip-right hover:bg-neutral-focus rounded-full w-10 h-10 grid grid-cols-1 grid-rows-1"
+              className="tooltip tooltip-right tooltip-info hover:bg-secondary-focus rounded-full w-10 h-10 grid grid-cols-1 grid-rows-1"
               data-tip={greeting}
               key={greeting}
               onMouseOut={handleGreeting}
