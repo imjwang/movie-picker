@@ -1,6 +1,8 @@
 import { useState } from "react";
 import useWordCount from "@/hooks/useWordCount";
 
+const maxLength = 50;
+
 const MovieTitle = () => {
   const { textCount, handleChange } = useWordCount();
 
@@ -12,12 +14,14 @@ const MovieTitle = () => {
       <input
         type="text"
         className="input input-bordered w-full max-w-md"
-        maxLength={50}
+        maxLength={maxLength}
         onChange={handleChange}
       />
       <label className="label">
         <span className="label-text-alt"></span>
-        <span className="label-text-alt">{textCount}/50</span>
+        <span className="label-text-alt">
+          {textCount}/{maxLength}
+        </span>
       </label>
     </div>
   );

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const useWordCount = (maxLength) => {
+const useWordCount = () => {
   const [textCount, setTextCount] = useState(0);
 
   const handleChange = (e) => {

@@ -2,9 +2,22 @@ import Link from "next/link";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import Image from "next/image";
 import Avatar from "./Avatar";
+import { useState, useEffect } from "react";
+import generateGreeting from "@/lib/randomGreeting";
 
 const Menu = () => {
+  const [greeting, setGreeting] = useState("");
   const { user, error, isLoading } = useUser();
+
+  const handleGreeting = () => {
+    setGreeting(generateGreeting());
+  };
+
+  useEffect(() => {
+    const initGreeting = generateGreeting();
+    setGreeting(initGreeting);
+  }, []);
+
   return (
     <div className="dropdown mx-2">
       <label tabIndex={0} className="hover:cursor-pointer">
@@ -12,7 +25,16 @@ const Menu = () => {
           <Avatar user={user} />
         ) : (
           <a href="/api/auth/login">
-            <span className="material-symbols-outlined">login</span>
+            <div
+              className="tooltip tooltip-right hover:bg-neutral-focus rounded-full w-10 h-10 grid grid-cols-1 grid-rows-1"
+              data-tip={greeting}
+              key={greeting}
+              onMouseOut={handleGreeting}
+            >
+              <span className="material-symbols-outlined self-center">
+                login
+              </span>
+            </div>
           </a>
         )}
       </label>
