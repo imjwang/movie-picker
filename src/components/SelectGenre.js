@@ -16,7 +16,7 @@ const SelectGenre = ({ genres = testData }) => {
       </label>
       <select className="select select-bordered">
         {genres.map((genre, idx) => (
-          <option selected={idx === 0} key={genre}>
+          <option selected={idx === 0} key={genre} value={genre}>
             {genre}
           </option>
         ))}
