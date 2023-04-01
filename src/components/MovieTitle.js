@@ -16,6 +16,7 @@ const MovieTitle = () => {
         className="input input-bordered w-full max-w-md"
         maxLength={maxLength}
         onChange={handleChange}
+        required
       />
       <label className="label">
         <span className="label-text-alt"></span>

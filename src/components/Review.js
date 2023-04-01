@@ -14,7 +14,11 @@ const Review = ({ movie = "Parasite" }) => {
   };
 
   return (
-    <Form handleSubmit={handleSubmit} title={movie}>
+    <Form
+      handleSubmit={handleSubmit}
+      title={movie}
+      text="By checking this box, I confirm to having watched this movie"
+    >
       <Rating />
       <TextBox />
     </Form>
