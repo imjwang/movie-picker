@@ -36,12 +36,12 @@ export default function Home() {
       </Head>
       <main>
         <NavBar />
-        <Review />
-        <AddForm />
-        <div className="bg-base-200 h-12 py-1 px-10 w-1/2 self-center">
-          <Spinner />
-        </div>
-        <Sheet></Sheet>
+        <Sheet>
+          <Review />
+        </Sheet>
+        <Sheet>
+          <AddForm />
+        </Sheet>
       </main>
     </>
   );

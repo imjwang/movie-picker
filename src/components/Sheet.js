@@ -1,7 +1,5 @@
-const Sheet = ({ style, children }) => {
-  return (
-    <div className={`my-6 mx-6 flex gap-x-2 gap-y-2 ${style}`}>{children}</div>
-  );
+const Sheet = ({ children }) => {
+  return <div className="p-20 flex gap-x-2 gap-y-2 bg-inherit">{children}</div>;
 };
 
 export default Sheet;
