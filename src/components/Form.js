@@ -2,7 +2,7 @@ import RequiredCheck from "./RequiredCheck";
 
 const Form = ({ children, handleSubmit, title, text }) => {
   return (
-    <div className="grow">
+    <div className="place-self-center w-screen md:w-3/4">
       <form onSubmit={handleSubmit}>
         <div className="p-12 flex flex-col space-y-6 bg-base-300">
           <article className="prose">
