@@ -3,9 +3,9 @@ import { supabase } from "@/lib/supabaseClient";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import NavBar from "@/components/NavBar";
 import Sheet from "@/components/Sheet";
-import Review from "@/components/Review";
+import Review from "@/components/forms/Review";
 import Spinner from "@/components/Spinner";
-import AddForm from "@/components/AddForm";
+import AddForm from "@/components/forms/AddForm";
 
 export default function Home() {
   const { user, error, isLoading } = useUser();

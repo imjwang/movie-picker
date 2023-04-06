@@ -1,15 +1,21 @@
 import RequiredCheck from "./RequiredCheck";
 import { FormContext } from "@/context/formStore";
 import { useContext } from "react";
+import { GlobalContext } from "@/context/globalStore";
+import Spinner from "@/components/Spinner";
 
 const Form = ({ children, handleSubmit, title, text }) => {
   const { state, dispatch } = useContext(FormContext);
+  const { state: loading, dispatch: loadingDispatch } =
+    useContext(GlobalContext);
 
   const formSubmit = async (e) => {
+    loadingDispatch({ type: "SET_LOADING", payload: true });
     e.preventDefault();
     await handleSubmit(state);
     dispatch({ type: "RESET_DATA" });
     e.target.reset();
+    loadingDispatch({ type: "SET_LOADING", payload: false });
   };
 
   return (
@@ -25,7 +31,7 @@ const Form = ({ children, handleSubmit, title, text }) => {
             className="btn btn-md btn-primary w-24 self-end"
             type="submit"
           >
-            submit
+            {loading.loading ? <Spinner /> : "submit"}
           </button>
         </div>
       </form>

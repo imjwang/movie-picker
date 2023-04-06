@@ -1,6 +1,6 @@
-import Rating from "./Rating";
-import TextBox from "./TextBox";
-import Form from "./Form";
+import Rating from "@/components/forms/helpers/Rating";
+import TextBox from "@/components/forms/helpers/TextBox";
+import Form from "@/components/forms/helpers/Form";
 
 const Review = ({ movie = "Parasite" }) => {
   const handleSubmit = (e) => {

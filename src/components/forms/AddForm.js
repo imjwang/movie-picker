@@ -1,6 +1,6 @@
-import MovieTitle from "./MovieTitle";
-import Form from "./Form";
-import SelectGenre from "./SelectGenre";
+import MovieTitle from "@/components/forms/helpers/MovieTitle";
+import Form from "@/components/forms/helpers/Form";
+import SelectGenre from "@/components/forms/helpers/SelectGenre";
 import { supabase } from "@/lib/supabaseClient";
 import { useUser } from "@auth0/nextjs-auth0/client";
 
