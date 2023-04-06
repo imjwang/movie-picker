@@ -10,15 +10,6 @@ import AddForm from "@/components/AddForm";
 export default function Home() {
   const { user, error, isLoading } = useUser();
 
-  const handleMovieAdd = async () => {
-    const { error } = await supabase.from("movies").insert({
-      name: "Jeff's Movie",
-      genre: "VIOLENCE",
-      director: "Jeff Jeffers",
-      user: user.sub,
-    });
-    console.log(error);
-  };
   const handleTest = async () => {
     const { error } = await supabase.from("users").insert({
       id: user.sub,
@@ -36,9 +27,6 @@ export default function Home() {
       </Head>
       <main>
         <NavBar />
-        <Sheet>
-          <Review />
-        </Sheet>
         <Sheet>
           <AddForm />
         </Sheet>

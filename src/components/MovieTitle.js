@@ -1,10 +1,11 @@
-import { useState } from "react";
-import useWordCount from "@/hooks/useWordCount";
+import { useContext } from "react";
+import { FormContext } from "@/context/formStore";
 
 const maxLength = 50;
 
 const MovieTitle = () => {
-  const { textCount, handleChange } = useWordCount();
+  const { state, dispatch } = useContext(FormContext);
+  const textCount = state.name?.length ?? 0;
 
   return (
     <div className="form-control w-full max-w-md">
@@ -13,9 +14,16 @@ const MovieTitle = () => {
       </label>
       <input
         type="text"
+        name="title"
         className="input input-bordered w-full max-w-md"
         maxLength={maxLength}
-        onChange={handleChange}
+        onChange={(e) =>
+          dispatch({
+            type: "EDIT_DATA",
+            payload: { name: "name", data: e.target.value },
+          })
+        }
+        value={state.title}
         required
       />
       <label className="label">
