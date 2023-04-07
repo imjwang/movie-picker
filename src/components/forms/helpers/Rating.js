@@ -1,4 +1,4 @@
-import Star from "./Star";
+import Star from "@/components/forms/helpers/Star";
 
 const Rating = () => {
   return (

@@ -15,6 +15,7 @@ const AddForm = () => {
       });
     } catch (e) {
       console.error(e);
+      alert("You must login to add a movie");
     }
   };
   return (
