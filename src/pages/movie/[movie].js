@@ -4,30 +4,50 @@ import { useState, useEffect } from "react";
 import NavBar from "@/components/NavBar";
 import Sheet from "@/components/Sheet";
 
-const MoviePage = () => {
+export async function getStaticPaths() {
+  const res = await supabase.from("movies").select();
+  const paths = res.data.map((i) => ({
+    params: { movie: String(i.id) },
+  }));
+  return { paths, fallback: false };
+}
+
+export async function getStaticProps({ params }) {
+  const res = await supabase.from("movies").select().eq("id", params.movie);
+  return {
+    props: {
+      data: res.data[0], // Return the first object in the array
+    },
+  };
+}
+
+const MoviePage = ({ data }) => {
   const router = useRouter();
   const { movie } = router.query;
+  const [t, setT] = useState(data);
 
-  const [t, setT] = useState([]);
   useEffect(() => {
-    const getData = async () => {
-      const { data } = await supabase.from("movies").select();
-      setT(data);
-    };
-    getData();
-  }, []);
+    const subscription = supabase
+      .channel("any")
+      .on(
+        "postgres_changes",
+        {
+          event: "UPDATE",
+          schema: "public",
+          table: "movies",
+          filter: `id=eq.${movie}`,
+        },
+        (payload) => {
+          console.log(payload);
+          setT(payload.new);
+        }
+      )
+      .subscribe();
 
-  supabase
-    .channel("any")
-    .on(
-      "postgres_changes",
-      { event: "*", schema: "public", table: "movies" },
-      (payload) => {
-        console.log(payload);
-        setT([...t, payload.new]);
-      }
-    )
-    .subscribe();
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, [movie]);
 
   if (!t) {
     return <div>Loading...</div>;
@@ -37,20 +57,8 @@ const MoviePage = () => {
     <>
       <NavBar />
       <Sheet>
-        <table className="table w-full">
-          <thead>
-            <tr>
-              <th>name</th>
-            </tr>
-          </thead>
-          <tbody>
-            {t.map((i) => (
-              <tr key={i.id}>
-                <td>{i.name}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <div className="flex flex-col items-center justify-center">fasdf</div>
+        <p>{t.name}</p>
       </Sheet>
     </>
   );
