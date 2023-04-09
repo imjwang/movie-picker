@@ -57,8 +57,14 @@ const MoviePage = ({ data }) => {
     <>
       <NavBar />
       <Sheet>
-        <div className="flex flex-col items-center justify-center">fasdf</div>
-        <p>{t.name}</p>
+        <div className="max-w-prose mx-auto lg:text-lg">
+          <p className="text-base text-center text-indigo-600 font-semibold tracking-wide uppercase">
+            {t.genre}
+          </p>
+          <h1 className="mt-2 text-5xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-6xl">
+            {t.name}
+          </h1>
+        </div>
       </Sheet>
     </>
   );
