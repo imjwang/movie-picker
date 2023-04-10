@@ -2,12 +2,19 @@ import { createContext, useReducer, useMemo } from "react";
 
 const initialState = {
   loading: false,
+  showModal: false,
 };
 
 const dataReducer = (state, action) => {
   switch (action.type) {
+    case "SET_MODAL":
+      return {
+        ...state,
+        showModal: action.payload,
+      };
     case "SET_LOADING":
       return {
+        ...state,
         loading: action.payload,
       };
     default:

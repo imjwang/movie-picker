@@ -1,14 +1,19 @@
 import { supabase } from "@/lib/supabaseClient";
 import NavBar from "@/components/NavBar";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { GlobalContext } from "@/context/globalStore";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
+import Modal from "@/components/Modal";
 
 export const getServerSideProps = withPageAuthRequired();
 
 const AboutPage = ({ user }) => {
   const [userData, setUserData] = useState([]);
+  const {
+    state: { showModal },
+    dispatch,
+  } = useContext(GlobalContext);
 
-  console.log(user);
   useEffect(() => {
     const getUserData = async () => {
       const { data } = await supabase
@@ -26,8 +31,15 @@ const AboutPage = ({ user }) => {
 
   return (
     <>
+      {showModal && <Modal />}
       <NavBar />
       <div className="prose">
+        <button
+          className="btn btn-primary"
+          onClick={() => dispatch({ type: "SET_MODAL", payload: true })}
+        >
+          click to open
+        </button>
         <h3>{user.name}</h3>
         {userData.map((i) => (
           <p key={i.id}>{i.name}</p>

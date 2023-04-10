@@ -3,6 +3,7 @@ import { supabase } from "@/lib/supabaseClient";
 import { useState, useEffect } from "react";
 import NavBar from "@/components/NavBar";
 import Sheet from "@/components/Sheet";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
 export async function getStaticPaths() {
   const res = await supabase.from("movies").select();
@@ -22,6 +23,7 @@ export async function getStaticProps({ params }) {
 }
 
 const MoviePage = ({ data }) => {
+  const { user, error, isLoading } = useUser();
   const router = useRouter();
   const { movie } = router.query;
   const [t, setT] = useState(data);
@@ -49,7 +51,7 @@ const MoviePage = ({ data }) => {
     };
   }, [movie]);
 
-  if (!t) {
+  if (!t || isLoading) {
     return <div>Loading...</div>;
   }
 
@@ -61,9 +63,10 @@ const MoviePage = ({ data }) => {
           <p className="text-base text-center text-indigo-600 font-semibold tracking-wide uppercase">
             {t.genre}
           </p>
-          <h1 className="mt-2 text-5xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-6xl">
+          <h1 className="mt-2 text-5xl text-center leading-8 font-extrabold tracking-tight text-inherit sm:text-6xl">
             {t.name}
           </h1>
+          {user && <button className="btn btn-primary">Click Me</button>}
         </div>
       </Sheet>
     </>
