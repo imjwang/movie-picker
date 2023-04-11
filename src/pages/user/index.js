@@ -4,6 +4,7 @@ import { useEffect, useState, useContext } from "react";
 import { GlobalContext } from "@/context/globalStore";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 import Modal from "@/components/Modal";
+import Sheet from "@/components/Sheet";
 
 export const getServerSideProps = withPageAuthRequired();
 
@@ -33,18 +34,20 @@ const AboutPage = ({ user }) => {
     <>
       {showModal && <Modal />}
       <NavBar />
-      <div className="prose">
+      <Sheet>
         <button
-          className="btn btn-primary"
+          className="btn btn-primary w-32"
           onClick={() => dispatch({ type: "SET_MODAL", payload: true })}
         >
           click to open
         </button>
         <h3>{user.name}</h3>
-        {userData.map((i) => (
-          <p key={i.id}>{i.name}</p>
-        ))}
-      </div>
+        <ul>
+          {userData.map((i) => (
+            <li key={i.id}>{i.name}</li>
+          ))}
+        </ul>
+      </Sheet>
     </>
   );
 };
