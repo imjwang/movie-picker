@@ -11,6 +11,7 @@ const generateGreeting = () => {
     "Hallo",
     "Привет",
     "Hej",
+    "مرحبا",
   ];
 
   const idx = Math.floor(Math.random() * greetings.length);
