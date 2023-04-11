@@ -26,6 +26,29 @@ const AboutPage = ({ user }) => {
     getUserData();
   }, []);
 
+  useEffect(() => {
+    const subscription = supabase
+      .channel("any")
+      .on(
+        "postgres_changes",
+        {
+          event: "INSERT",
+          schema: "public",
+          table: "movies",
+          filter: `user=eq.${user.sub}`,
+        },
+        (payload) => {
+          console.log(payload);
+          setUserData([...userData, payload.new]);
+        }
+      )
+      .subscribe();
+
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, [userData, setUserData, user.sub]);
+
   if (user === undefined) {
     return <div>loading...</div>;
   }

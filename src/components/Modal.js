@@ -10,7 +10,7 @@ const Modal = () => {
   return (
     <>
       <input
-        initialChecked={showModal}
+        checked={showModal}
         type="checkbox"
         id="my-modal-4"
         className="modal-toggle"
