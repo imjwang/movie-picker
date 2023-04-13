@@ -10,13 +10,6 @@ import AddForm from "@/components/forms/AddForm";
 export default function Home() {
   const { user, error, isLoading } = useUser();
 
-  const handleTest = async () => {
-    const { error } = await supabase.from("users").insert({
-      id: user.sub,
-      name: user.name,
-    });
-    console.log(error);
-  };
   return (
     <>
       <Head>

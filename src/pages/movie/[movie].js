@@ -58,7 +58,7 @@ const MoviePage = ({ data }) => {
   return (
     <>
       <NavBar />
-      <Sheet>
+      <Sheet prose>
         <div className="max-w-prose mx-auto lg:text-lg">
           <p className="text-base text-center text-indigo-600 font-semibold tracking-wide uppercase">
             {t.genre}

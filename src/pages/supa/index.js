@@ -31,7 +31,7 @@ const Page = () => {
   return (
     <>
       <NavBar />
-      <Sheet>
+      <Sheet prose>
         <table className="table w-full">
           <thead>
             <tr>

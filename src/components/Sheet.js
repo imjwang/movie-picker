@@ -1,6 +1,10 @@
-const Sheet = ({ children }) => {
+const Sheet = ({ children, prose }) => {
   return (
-    <div className="prose p-6 md:p-20 flex flex-col gap-x-2 gap-y-2 bg-inherit">
+    <div
+      className={`p-6 md:p-20 flex flex-col gap-x-2 gap-y-2 bg-inherit ${
+        prose && "prose"
+      }`}
+    >
       {children}
     </div>
   );

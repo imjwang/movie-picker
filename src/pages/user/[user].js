@@ -83,15 +83,13 @@ const UserPage = ({ data }) => {
   return (
     <>
       <NavBar />
-      <Sheet>
-        <div className="prose max-w-prose mx-auto lg:text-lg">
-          <h1>{userName}</h1>
-          {movieNames.map((i) => (
-            <div key={i.name}>
-              <p>{i.name}</p>
-            </div>
-          ))}
-        </div>
+      <Sheet prose>
+        <h1>{userName}</h1>
+        {movieNames.map((i) => (
+          <div key={i.name}>
+            <p>{i.name}</p>
+          </div>
+        ))}
       </Sheet>
     </>
   );

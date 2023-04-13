@@ -55,14 +55,21 @@ const AboutPage = ({ user }) => {
 
   return (
     <>
-      {showModal && <Modal />}
+      {showModal && (
+        <Modal>
+          <h1>Modal</h1>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+          </p>
+        </Modal>
+      )}
       <NavBar />
-      <Sheet>
+      <Sheet prose>
         <button
           className="btn btn-primary w-32"
           onClick={() => dispatch({ type: "SET_MODAL", payload: true })}
         >
-          click to open
+          open modal
         </button>
         <h3>{user.name}</h3>
         <ul>
@@ -75,3 +82,52 @@ const AboutPage = ({ user }) => {
   );
 };
 export default AboutPage;
+
+`My heart, my life 
+Don't hide it from me 
+Tell me what's in your heart 
+What's in my heart,
+ what's in my heart 
+ I couldn't tell you
+  All I want to say is 
+  You're my love from now on 
+  How can I forget all those things?
+   I'm happy because of you 
+   We haven't slept for so many nights 
+   Now you're in my world I kept meeting you in my dreams 
+   I couldn't say it out loud 
+   That I can't live without you 
+   I'll never leave you 
+   I'm worried 
+   Where am I lost? 
+   In the path of love 
+   Now I found you 
+   I'm worried 
+   Where am I lost? 
+   In the path of love 
+   Now I found you 
+   My heart, my life Don't hide it from me 
+   Tell me what's in your heart 
+   What's in my heart, 
+   what's in my heart 
+   I know everything that you're hiding 
+   You tell everyone except me 
+   You show me the right with love
+  I don't know why you're torturing me so much
+  My heartbeats are impatient
+      Maybe you don't even know 
+      How much you mean to me 
+      I understand your love 
+      I kept meeting you in my dreams 
+      I couldn't say it out loud 
+      That I can't live without you 
+      I'll never leave you I'm worried 
+      Where am I lost?
+       In the path of love 
+       Now I found you I'm worried 
+       Where am I lost? 
+       In the path of love 
+       Now I found you 
+       I'm worried Where am I lost?
+        In the path of love 
+        Now I found you`;

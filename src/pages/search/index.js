@@ -21,7 +21,7 @@ const SearchPage = () => {
   }, [query]);
 
   return (
-    <Sheet>
+    <Sheet prose>
       <input
         className="input input-primary"
         type="text"
