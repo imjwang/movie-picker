@@ -5,11 +5,21 @@ import NavBar from "@/components/NavBar";
 
 const AudioPage = () => {
   const ref = useRef(null);
+  const [chunks, setChunks] = useState([]);
   let stream = null;
+  let mediaRecorder = null;
 
   const getMedia = async (constraints) => {
     try {
       stream = await navigator.mediaDevices.getUserMedia(constraints);
+      mediaRecorder = new MediaRecorder(stream);
+      mediaRecorder.ondataavailable = (e) => {
+        if (e.data.size > 0) {
+          setChunks([...chunks, e.data]);
+        }
+      };
+      mediaRecorder.start();
+
       const audioTracks = stream.getAudioTracks();
       console.log("Using audio device: " + audioTracks[0].label);
       stream.oninactive = function () {
@@ -22,6 +32,9 @@ const AudioPage = () => {
     const audio = ref.current;
     if (audio !== null) {
       audio.srcObject = stream;
+      audio.onloadedmetadata = () => {
+        audio.play();
+      };
     }
   };
 
@@ -29,20 +42,42 @@ const AudioPage = () => {
     audio: true,
   };
 
-  getMedia(constraints);
-
-  const handleCLick = () => {
+  const handleStop = () => {
+    mediaRecorder.requestData();
     if (stream) {
       const audioTracks = stream.getAudioTracks();
       audioTracks.forEach((track) => track.stop());
+      mediaRecorder.stop();
     }
+  };
+
+  const handleStart = () => {
+    getMedia(constraints);
+  };
+
+  const handleDownload = () => {
+    const blob = new Blob(chunks, { type: "audio/webm" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "test.webm";
+    a.style.display = "none";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
   };
 
   return (
     <>
       <NavBar />
-      <button className="btn btn-primary" onClick={handleCLick}>
+      <button className="btn btn-primary" onClick={handleStop}>
         stop
+      </button>
+      <button className="btn btn-secondary" onClick={handleStart}>
+        start
+      </button>
+      <button className="btn btn-accent" onClick={handleDownload}>
+        download
       </button>
       <Sheet>
         <audio ref={ref} controls />
