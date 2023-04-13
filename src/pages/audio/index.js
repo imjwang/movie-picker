@@ -55,16 +55,16 @@ const AudioPage = () => {
     getMedia(constraints);
   };
 
-  const handleDownload = () => {
+  const handleDownload = async () => {
+    const fileName = `record.webm`;
+
     const blob = new Blob(chunks, { type: "audio/webm" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "test.webm";
-    a.style.display = "none";
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
+
+    const { error } = await supabase.storage
+      .from("audio")
+      .upload(fileName, blob);
+
+    console.log(error);
   };
 
   return (
