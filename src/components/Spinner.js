@@ -1,6 +1,6 @@
 const Spinner = () => {
   return (
-    <svg className="animate-spin h-10 w-10 mr-3" viewBox="0 0 24 24">
+    <svg className="animate-spin h-10 w-10 mr-3 bg-pastel-blue" viewBox="0 0 24 24">
       <circle
         className="opacity-25 stroke-cyan-500 fill-none stroke-[4px]"
         cx="12"

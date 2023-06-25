@@ -19,7 +19,7 @@ const Modal = ({ children }) => {
           dispatch({ type: "SET_MODAL", payload: !showModal });
         }}
       />
-      <label htmlFor="my-modal-4" className="modal cursor-pointer modal-open">
+      <label htmlFor="my-modal-4" className="modal cursor-pointer modal-open bg-cream">
         <label className="modal-box relative">
           <label
             htmlFor="my-modal-4"

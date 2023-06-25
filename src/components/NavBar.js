@@ -4,7 +4,7 @@ import Avatar from "./Avatar";
 
 const NavBar = () => {
   return (
-    <div className="navbar bg-secondary">
+    <div className="navbar bg-pastel-blue text-cream">
       <div className="navbar-start">
         <Menu />
       </div>
