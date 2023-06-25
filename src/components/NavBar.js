@@ -19,3 +19,14 @@ const NavBar = () => {
 };
 
 export default NavBar;
+
+import SideNav from './SideNav';
+
+// ...
+
+<div className="navbar-start">
+  <Menu />
+  <SideNav />
+</div>
+
+// ...
